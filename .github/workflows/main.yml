@@ -1,0 +1,20 @@
+name: main
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
+      - name: Config Git
+        run: |
+          git config --global user.name "random-bot"
+          git config --global user.email  "random-bot@bot"
+          echo '${{ secrets.GITHUB1_PRIVATE_KEY }}' > ~/.ssh/id_rsa
+      - name: Commit
+          filename=$(date +%s%N)
+          "date" | ssh-keygen -f $(filename)
+          git add *
+          git commit -m $(filename)
+          git push origin main
