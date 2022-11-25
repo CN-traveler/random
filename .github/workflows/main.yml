@@ -16,8 +16,7 @@ jobs:
           git config --global user.email  "random-bot@bot"
       - name: Commit
         run: |
-          filename=$(date +%s%N)
-          "date" | ssh-keygen -f ./data/$(filename)
+          "date" | ssh-keygen -f ./data/$(date +%s%N)
           git add *
-          git commit -m $(filename)
+          git commit -m $(date +%s%N)
           git push origin main
