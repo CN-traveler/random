@@ -16,7 +16,7 @@ jobs:
           git config --global user.email  "random-bot@bot"
       - name: Commit
         run: |
-          "date" | ssh-keygen -f ./data/$(date +%s%N)
+          echo "$(date +%s%N)" > ./data/$(date +%s%N)
           git add *
           git commit -m $(date +%s%N)
           git push origin main
